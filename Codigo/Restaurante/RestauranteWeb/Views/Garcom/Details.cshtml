@@ -73,7 +73,7 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Editar", "Edit", new {  id = Model.Id  }) |
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn-back" }) 
 
-    <a asp-action="Index">Voltar</a>
+    <a asp-action="Index" class="btn-back">Voltar</a>
 </div>
