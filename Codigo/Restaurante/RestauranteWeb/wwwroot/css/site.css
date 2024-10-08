@@ -81,41 +81,41 @@ button[type="submit"] {
 }
 
 .modal-dialog {
-    max-width: 600px; /* Define a largura máxima do modal */
-    margin: 1.75rem auto; /* Centraliza o modal verticalmente */
+    max-width: 600px; 
+    margin: 1.75rem auto; 
     color: black;
 }
 
 .modal-content {
-    border-radius: 0.5rem; /* Arredondar os cantos do modal */
+    border-radius: 0.5rem; 
 }
 
 .modal-header {
-    background-color: #f7f7f7; /* Cor de fundo do cabeçalho */
-    border-bottom: 1px solid #dee2e6; /* Borda inferior */
+    background-color: #f7f7f7; 
+    border-bottom: 1px solid #dee2e6; 
 }
 
 .modal-footer {
-    background-color: #f7f7f7; /* Cor de fundo do rodapé */
+    background-color: #f7f7f7; 
 }
 
-/* Adiciona um pouco de sombra ao modal */
+
 .modal {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilo do botão de fechar */
+
 .modal-header .close {
-    background-color: red; /* Cor de fundo do botão de fechar */
-    color: white; /* Cor do "X" */
-    border: none; /* Remove a borda padrão */
-    border-radius: 10%; /* Faz o botão ser redondo */
-    padding: 0.5rem; /* Espaçamento interno */
+    background-color: red; 
+    color: white; 
+    border: none; 
+    border-radius: 10%; 
+    padding: 0.5rem; 
 }
 
     .modal-header .close:hover {
-        background-color: darkred; /* Cor ao passar o mouse */
-        color: white; /* Mantém o "X" branco ao passar o mouse */
+        background-color: darkred; 
+        color: white; 
     }
 
 
