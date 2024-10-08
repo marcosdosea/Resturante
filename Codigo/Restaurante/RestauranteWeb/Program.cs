@@ -1,6 +1,7 @@
 using Core;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
 using Service;
 
 namespace RestauranteWeb
@@ -9,6 +10,7 @@ namespace RestauranteWeb
     {
         public static void Main(string[] args)
         {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -36,7 +38,9 @@ namespace RestauranteWeb
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            
 
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
