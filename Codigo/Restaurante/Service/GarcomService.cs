@@ -3,6 +3,7 @@ using Core;
 using Core.DTO;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Bcpg;
 
 
 namespace Service
@@ -51,7 +52,7 @@ namespace Service
         {
             return context.Garcoms.AsNoTracking();
         }
-
+        
         public IEnumerable<GarcomDto> GetByNome(string nome)
         {
             var query = from garcom in context.Garcoms
@@ -73,6 +74,11 @@ namespace Service
         IEnumerable<Garcom> IGarcomService.GetAll()
         {
             return context.Garcoms.AsNoTracking().ToList();
+        }
+
+        public int QuantidadeGarcomCadastrado()
+        {
+            return context.Garcoms.Count();
         }
     }
 }

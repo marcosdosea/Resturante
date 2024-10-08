@@ -2,6 +2,7 @@
 using Core;
 using Core.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using RestauranteWeb.Models;
 
 namespace RestauranteWeb.Controllers
@@ -24,6 +25,8 @@ namespace RestauranteWeb.Controllers
         {
             var listaGarcom = garcomService.GetAll();
             var listaGarcomViewModel = mapper.Map<List<GarcomViewModel>>(listaGarcom);
+            int quantidadeGarcons = garcomService.QuantidadeGarcomCadastrado();
+            ViewBag.Quantidade = quantidadeGarcons;
             return View(listaGarcomViewModel);
         }
 

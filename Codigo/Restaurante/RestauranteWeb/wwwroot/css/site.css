@@ -23,6 +23,7 @@ header {
     header .navbar-nav .nav-link {
         color: #00bfff;
         padding: 10px;
+        text-decoration: none;
         border: 1px solid #00bfff;
         border-radius: 5px;
         margin: 0 5px;
@@ -78,6 +79,45 @@ button[type="submit"] {
     border-radius: 4px;
     padding: 10px;
 }
+
+.modal-dialog {
+    max-width: 600px; /* Define a largura máxima do modal */
+    margin: 1.75rem auto; /* Centraliza o modal verticalmente */
+    color: black;
+}
+
+.modal-content {
+    border-radius: 0.5rem; /* Arredondar os cantos do modal */
+}
+
+.modal-header {
+    background-color: #f7f7f7; /* Cor de fundo do cabeçalho */
+    border-bottom: 1px solid #dee2e6; /* Borda inferior */
+}
+
+.modal-footer {
+    background-color: #f7f7f7; /* Cor de fundo do rodapé */
+}
+
+/* Adiciona um pouco de sombra ao modal */
+.modal {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo do botão de fechar */
+.modal-header .close {
+    background-color: red; /* Cor de fundo do botão de fechar */
+    color: white; /* Cor do "X" */
+    border: none; /* Remove a borda padrão */
+    border-radius: 10%; /* Faz o botão ser redondo */
+    padding: 0.5rem; /* Espaçamento interno */
+}
+
+    .modal-header .close:hover {
+        background-color: darkred; /* Cor ao passar o mouse */
+        color: white; /* Mantém o "X" branco ao passar o mouse */
+    }
+
 
     .form-control:focus {
         border-color: #00bfff;
