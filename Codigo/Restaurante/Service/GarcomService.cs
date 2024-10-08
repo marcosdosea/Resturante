@@ -77,7 +77,7 @@ namespace Service
         }
         public int QuantidadeGarcomCadastrado()
         {
-            return context.Garcoms.Count();
+            return context.Garcoms.AsNoTracking().Count();
         }
     }
 }
