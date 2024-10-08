@@ -30,9 +30,13 @@ namespace RestauranteWeb.Controllers
         // GET: GarcomControler/Details/5
         public ActionResult Details(uint id)
         {
-            var garcom = garcomService.Get(id);
-            var garcomViewModel = mapper.Map<GarcomViewModel>(garcom);
-            return View(garcomViewModel);
+            Garcom? garcom = garcomService.Get(id);
+            if(garcom == null)
+            {
+                return NotFound();
+            }
+            GarcomViewModel garcomModel = mapper.Map<GarcomViewModel>(garcom);
+            return View(garcomModel);
         }
 
         // GET: GarcomControler/Create
@@ -54,14 +58,21 @@ namespace RestauranteWeb.Controllers
             {
                 var garcom = mapper.Map<Garcom>(garcomViewModel);
                 garcomService.Create(garcom);
+                return RedirectToAction(nameof(Index)); 
+             
             }
-            return RedirectToAction(nameof(Index));
+            return View(garcomViewModel);
         }
+        
 
         // GET: GarcomControler/Edit/5
         public ActionResult Edit(uint id)
         {
             var garcom = garcomService.Get(id);
+            if (garcom == null)
+            {
+                return NotFound(); // Retorna 404 se não encontrado
+            }
             var garcomViewModel = mapper.Map<GarcomViewModel>(garcom);
             return View(garcomViewModel);
         }
@@ -75,14 +86,20 @@ namespace RestauranteWeb.Controllers
             {
                 var garcom = mapper.Map<Garcom>(garcomViewModel);
                 garcomService.Edit(garcom);
+                return RedirectToAction(nameof(Index));
             }
-            return RedirectToAction(nameof(Index));
+            return View(garcomViewModel);
         }
+
 
         // GET: GarcomControler/Delete/5
         public ActionResult Delete(uint id)
         {
             var garcom = garcomService.Get(id);
+            if (garcom == null)
+            {
+                return NotFound(); // Retorna 404 se não encontrado
+            }
             var garcomViewModel = mapper.Map<GarcomViewModel>(garcom);
             return View(garcomViewModel);
         }

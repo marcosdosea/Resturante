@@ -25,7 +25,7 @@ namespace RestauranteWeb
                 options => options.UseMySQL(builder.Configuration.GetConnectionString("RestauranteDatabase")));
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            //builder.Services.AddControllersWithViews();
            
             var app = builder.Build();
 

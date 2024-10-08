@@ -22,8 +22,6 @@ namespace Service
             return garcom.Id;
         }
 
-
-
         public void Delete(uint id)
         {
             var garcom = context.Garcoms.Find(id);
