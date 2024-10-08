@@ -27,7 +27,7 @@ namespace Service
 
         public void Delete(uint id)
         {
-            var itemcardapio = context.Garcoms.Find(id);
+            var itemcardapio = context.Itemcardapios.Find(id);
 
             if (itemcardapio != null)
             {
@@ -65,8 +65,7 @@ namespace Service
                         select new ItemcardapioDto
                         {
                             Id = Itemcardapio.Id,
-                            Nome = Itemcardapio.Nome,
-                            
+                            Nome = Itemcardapio.Nome,      
                         };
             return query;
         }
