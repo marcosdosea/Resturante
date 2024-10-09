@@ -1,4 +1,4 @@
-/* Estilos gerais da p�gina */
+﻿/* Estilos gerais da página */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #333;
@@ -7,7 +7,15 @@ body {
     padding: 0;
 }
 
-/* Estilos para o cabe�alho (header) */
+/* Ícone de confirmação */
+.confirmed-icon::before {
+    content: "\2714"; /* Código Unicode para o caractere "✔" (ícone de check) */
+    color: var(--v-icon-color); /* Use a cor desejada para o ícone */
+    font-size: 1.2em; /* Tamanho do ícone */
+    margin-right: 5px; /* Espaçamento entre o ícone e o texto */
+}
+
+/* Estilos para o cabeçalho (header) */
 header {
     background-color: #333;
     padding: 20px 0;
@@ -43,7 +51,7 @@ input[type="text"] {
     margin-top: 15px;
 }
 
-/* Estilos para o bot�o de pesquisa */
+/* Estilos para o botão de pesquisa */
 button[type="submit"] {
     background-color: #00bfff;
     color: white;
@@ -58,7 +66,7 @@ button[type="submit"] {
         background-color: #007bbf;
     }
 
-/* Estilos para o formul�rio */
+/* Estilos para o formulário */
 .form-restaurante {
     background-color: #ffffff;
     padding: 20px;
@@ -156,7 +164,7 @@ td {
     background-color: #444;
 }
 
-/* Estilos para os bot�es */
+/* Estilos para os botões */
 .btn-primary {
     background-color: #00bfff;
     border: none;
@@ -193,7 +201,7 @@ td {
         text-decoration: underline;
     }
 
-/* Estilos para o rodap� (footer) */
+/* Estilos para o rodapé (footer) */
 footer {
     background-color: #1f1f1f;
     color: white;

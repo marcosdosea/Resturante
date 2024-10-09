@@ -11,5 +11,6 @@ namespace Core.Service
         public int  QuantidadeGarcomCadastrado();
         IEnumerable<Garcom> GetAll();
         IEnumerable<GarcomDto> GetByNome(string nome);
+        Task<List<GarcomDto>> BuscarGarconsPorRestauranteId(uint id);
     }
 }
