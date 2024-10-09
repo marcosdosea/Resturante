@@ -1,6 +1,7 @@
 ﻿using Core;
 using Core.DTO;
 using Core.Service;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +39,7 @@ namespace Service
         /// Remove um Restaurante existente com base no seu Id.
         /// </summary>
         /// <param name="id">Id do Restaurante a ser removido</param>
-        public void Delete(int id)
+        public void Delete(uint id)
         {
             var restaurante = context.Restaurantes.Find(id);
             if (restaurante != null)
@@ -63,7 +64,7 @@ namespace Service
         /// </summary>
         /// <param name="id">Id do Restaurante</param>
         /// <returns>Entidade Restaurante correspondente ao Id, ou null se não encontrado</returns>
-        public Restaurante? Get(int id)
+        public Restaurante? Get(uint id)
         {
             return context.Restaurantes.Find(id);
         }
@@ -74,7 +75,7 @@ namespace Service
         /// <returns>Lista de todas as entidades Restaurante</returns>
         public IEnumerable<Restaurante> GetAll()
         {
-            return context.Restaurantes.ToList();
+            return context.Restaurantes.AsNoTracking();
         }
 
         /// <summary>
