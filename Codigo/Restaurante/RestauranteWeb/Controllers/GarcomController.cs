@@ -4,6 +4,7 @@ using Core.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using RestauranteWeb.Models;
+using Service;
 
 namespace RestauranteWeb.Controllers
 {
@@ -114,6 +115,33 @@ namespace RestauranteWeb.Controllers
         {
             garcomService.Delete(garcomViewModel.Id);
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<ActionResult> BuscarGarconsPorRestauranteId(uint id)
+        {
+            if (id <= 0)
+            {
+                return BadRequest("ID inválido.");
+            }
+
+            var garconsDto = await garcomService.BuscarGarconsPorRestauranteId(id);
+            if (garconsDto == null || garconsDto.Count == 0)
+            {
+                return BadRequest("ID inválido.");
+            }
+
+            
+            var garconsViewModel = garconsDto.Select(static g => new GarcomViewModel
+            {
+                Id = g.Id,
+                Nome = g.Nome,
+                Cpf = g.Cpf,
+                Telefone1 = g.Telefone1,
+                IdRestaurante = g.IdRestaurante
+
+            }).ToList();
+
+            return View(garconsViewModel);
         }
     }
 }

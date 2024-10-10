@@ -1,0 +1,36 @@
+﻿@model IEnumerable<RestauranteWeb.Models.GarcomViewModel>
+<p>Garcons de Restaurante  </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cpf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdRestaurante)
+            </th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+            <td>@Html.DisplayFor(modelItem => item.Cpf)</td>
+            <td>@Html.DisplayFor(modelItem => item.Telefone1)</td>
+            <td>@Html.DisplayFor(modelItem => item.IdRestaurante)</td>
+            <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn-primary" })
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.Id }, new { @class = "btn-primary" })
+                    @Html.ActionLink("Deletar", "Delete", new { id = item.Id }, new { @class = "btn-primary" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

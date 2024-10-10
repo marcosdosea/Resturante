@@ -3,8 +3,6 @@ using Core;
 using Core.DTO;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
-using Org.BouncyCastle.Bcpg;
-
 
 namespace Service
 {
@@ -79,5 +77,22 @@ namespace Service
         {
             return context.Garcoms.AsNoTracking().Count();
         }
+        public async Task<List<GarcomDto>> BuscarGarconsPorRestauranteId(uint id)
+        {
+            var garcons = await context.Garcoms
+                .Where(g => g.IdRestaurante == id)
+                .Select(g => new GarcomDto
+                {
+                    Id = g.Id,
+                    Nome = g.Nome,
+                    Cpf = g.Cpf,
+                    Telefone1 = g.Telefone1,
+                    IdRestaurante = g.IdRestaurante
+                    
+                })
+                .ToListAsync();
+
+            return garcons;
+        }
     }
-}
+}        
