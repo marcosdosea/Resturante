@@ -334,7 +334,7 @@ footer {
         border-radius: 4px;
     }
 
-/* Estilos para os botões em grupo NOVO */
+/* Estilos para os botões em grupo --- */
 .btn-group {
     display: flex;
     gap: 5px; 
