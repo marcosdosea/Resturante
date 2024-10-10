@@ -81,49 +81,45 @@ button[type="submit"] {
 }
 
 .modal-dialog {
-    max-width: 600px; 
-    margin: 1.75rem auto; 
+    max-width: 600px;
+    margin: 1.75rem auto;
     color: black;
 }
 
 .modal-content {
-    border-radius: 0.5rem; 
+    border-radius: 0.5rem;
 }
 
 .modal-header {
-    background-color: #f7f7f7; 
-    border-bottom: 1px solid #dee2e6; 
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #dee2e6;
 }
 
 .modal-footer {
-    background-color: #f7f7f7; 
+    background-color: #f7f7f7;
 }
-
 
 .modal {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-
 .modal-header .close {
-    background-color: red; 
-    color: white; 
-    border: none; 
-    border-radius: 10%; 
-    padding: 0.5rem; 
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 10%;
+    padding: 0.5rem;
 }
 
     .modal-header .close:hover {
-        background-color: darkred; 
-        color: white; 
+        background-color: darkred;
+        color: white;
     }
 
-
-    .form-control:focus {
-        border-color: #00bfff;
-        box-shadow: 0 0 0 0.1rem rgba(0, 191, 255, 0.5);
-    }
-
+.form-control:focus {
+    border-color: #00bfff;
+    box-shadow: 0 0 0 0.1rem rgba(0, 191, 255, 0.5);
+}
 
 a {
     color: #00bfff;
@@ -133,7 +129,6 @@ a {
         text-decoration: underline;
         color: #007bbf;
     }
-
 
 table {
     width: 100%;
@@ -158,16 +153,17 @@ td {
 
 /* Estilos para os botões */
 .btn-primary {
-    background-color: #00bfff;
+    background-color: #26c4d5;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
-    text-decoration :none;
+    text-decoration: none;
     font-size: 1rem;
     color: white;
     cursor: pointer;
     width: 100%;
 }
+
 .btn-back {
     background-color: #00bfff;
     border: none;
@@ -180,9 +176,9 @@ td {
     width: 100%;
 }
 
-    .btn-primary:hover {
-        background-color: #007bbf;
-    }
+.btn-primary:hover {
+    background-color: #007bbf;
+}
 
 .btn-link {
     color: #00bfff;
@@ -209,6 +205,177 @@ footer {
         footer a:hover {
             color: #007bbf;
         }
+
+/* Estilos para os detalhes */
+.details-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.details-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #343a40;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.details-divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, #0f707b, #26c4d5);
+    margin: 10px 0;
+}
+
+.details-list {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px 20px;
+    font-size: 16px;
+    color: #495057;
+}
+
+    .details-list dt {
+        font-weight: bold;
+        color: #0f707b;
+    }
+
+    .details-list dd {
+        margin: 0;
+        padding: 5px;
+        background-color: #e9ecef;
+        border-radius: 4px;
+    }
+
+.details-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Estilos para o index */
+.index-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.index-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.index-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.index-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-create {
+    background-color: #26c4d5;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-create:hover {
+        background-color: #0c5e64;
+    }
+
+.index-table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+
+    .index-table th, .index-table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        color: #495057;
+    }
+
+    .index-table th {
+        background-color: #26c4d5;
+        color: #ffffff;
+        text-transform: uppercase;
+    }
+
+    .index-table tr:hover {
+        background-color: #f1f1f1;
+    }
+
+.top-restaurants-list {
+    list-style: none;
+    padding: 0;
+}
+
+    .top-restaurants-list li {
+        background-color: #e9ecef;
+        padding: 8px;
+        margin-bottom: 5px;
+        border-radius: 4px;
+    }
+
+/* Estilos para os botões em grupo */
+.btn-group {
+    display: flex;
+    gap: 5px; /* Espaçamento entre os botões */
+    justify-content: center;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+    margin: 5px 5px;
+}
+
+.btn-edit {
+    background-color: #26c4d5;
+    padding: 7px 15px;
+    width: 75px;
+    height: 35px;
+}
+
+    .btn-edit:hover {
+        background-color: #0c5e64;
+    }
+
+.btn-details {
+    background-color: #26c4d5;
+}
+
+    .btn-details:hover {
+        background-color: #1fa8bb;
+    }
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
 
 /* Estilos de responsividade */
 @media (max-width: 768px) {

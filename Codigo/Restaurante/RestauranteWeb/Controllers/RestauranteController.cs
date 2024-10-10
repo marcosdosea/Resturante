@@ -4,6 +4,7 @@ using Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RestauranteWeb.Models;
+using Service;
 
 namespace RestauranteWeb.Controllers
 {
@@ -20,13 +21,18 @@ namespace RestauranteWeb.Controllers
 
 
         // GET: RestauranteController
-
         public ActionResult Index()
         {
-            var listaRestaurante = restauranteService.GetAll();
+            var listaRestaurante = restauranteService.GetAll()
+                .OrderBy(r => r.Nome)
+                .Take(10) // Pega apenas os 10 primeiros
+                .ToList();
             var listaRestauranteModel = mapper.Map<List<RestauranteViewModel>>(listaRestaurante);
+            int quantidadeRestaurante = restauranteService.QuantidadeRestaurantesCadastrado();
+            ViewBag.Quantidade = quantidadeRestaurante;
             return View(listaRestauranteModel);
         }
+
 
         // GET: RestauranteController/Details/5
         public ActionResult Details(uint id)

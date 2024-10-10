@@ -58,6 +58,14 @@ namespace Service
             context.Update(restaurante);
             context.SaveChanges();
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public int QuantidadeRestaurantesCadastrado()
+        {
+            return context.Restaurantes.AsNoTracking().Count();
+        }
 
         /// <summary>
         /// Obtém um Restaurante específico pelo seu Id.
@@ -75,7 +83,8 @@ namespace Service
         /// <returns>Lista de todas as entidades Restaurante</returns>
         public IEnumerable<Restaurante> GetAll()
         {
-            return context.Restaurantes.AsNoTracking();
+            return context.Restaurantes.AsNoTracking().ToList();
+         
         }
 
         /// <summary>

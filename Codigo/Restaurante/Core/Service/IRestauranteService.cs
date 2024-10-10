@@ -12,6 +12,7 @@ namespace Core.Service
         uint Create(Restaurante restaurante);
         void Edit(Restaurante restaurante);
         void Delete(uint id);
+        public int QuantidadeRestaurantesCadastrado();
         Restaurante? Get(uint id);
         IEnumerable<Restaurante> GetAll();
         IEnumerable<RestauranteDto> GetByNome(string nome);
