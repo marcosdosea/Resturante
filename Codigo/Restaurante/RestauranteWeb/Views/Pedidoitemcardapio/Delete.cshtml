@@ -1,32 +1,36 @@
 ﻿@model RestauranteWeb.Models.PedidoitemcardapioViewModel
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Voce tem certeza que gostaria de deletar este Pedido item cardapio?</h3>
 <div>
     <h4>PedidoitemcardapioViewModel</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.IdItemCardapio)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.IdItemCardapio)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.IdPedido)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.IdPedido)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Quantidade)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Quantidade)
         </dd>
     </dl>
-    
-    <form asp-action="Delete">
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="IdItemCardapio" />
+        <input type="hidden" asp-for="IdPedido" />
+        <button type="submit" class="btn btn-danger">Confirmar exclusão</button>
     </form>
+
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
