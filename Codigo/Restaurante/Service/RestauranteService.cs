@@ -41,10 +41,23 @@ namespace Service
         /// <param name="id">Id do Restaurante a ser removido</param>
         public void Delete(uint id)
         {
-            var restaurante = context.Restaurantes.Find(id);
+            var restaurante = context.Restaurantes
+                .Include(r => r.Itemcardapios)
+                .Include(r => r.Garcoms)
+                .FirstOrDefault(r => r.Id == id);
+
             if (restaurante != null)
             {
-                context.Remove(restaurante);
+                if (restaurante.Itemcardapios != null && restaurante.Itemcardapios.Any())
+                {
+                    context.Itemcardapios.RemoveRange(restaurante.Itemcardapios);
+                }
+
+                if (restaurante.Garcoms != null && restaurante.Garcoms.Any())
+                {
+                    context.Garcoms.RemoveRange(restaurante.Garcoms);
+                }
+                context.Restaurantes.Remove(restaurante);
                 context.SaveChanges();
             }
         }
