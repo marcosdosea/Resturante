@@ -1,48 +1,124 @@
 ﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+/* layout.css */
+
+/* layout.css */
+
+/* Estilo para a área de detalhes */
+.details-container {
+    background-color: #f8f9fa; /* Fundo suave */
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
 }
 
-a {
-  color: #0077cc;
+/* Estilo do título */
+.details-title {
+    font-size: 1.8rem;
+    color: #0f707b;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.details-divider {
+    border-top: 2px solid #cedbdc;
+    margin: 10px 0;
+}
+
+/* Estilo para formulários */
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #0f707b;
+}
+
+.form-group .form-control {
+    border-radius: 5px;
+    border: 1px solid #cedbdc;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 15px;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    background-color: #0f707b;
+    border-color: #0f707b;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.btn-primary:hover {
+    background-color: #26c4d5;
+    border-color: #26c4d5;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.btn-back {
+    background-color: transparent;
+    color: #0f707b;
+    border: 1px solid #0f707b;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+.btn-back:hover {
+    background-color: #0f707b;
+    color: #ffffff;
 }
 
+.text-danger {
+    color: #e74c3c;
+}
+
+/* Estilo para o footer */
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+    background-color: #f8f9fa;
+    color: #63878a;
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid #0f707b;
+}
+
+.footer a {
+    color: #0f707b;
+    transition: color 0.2s ease-in-out;
+}
+
+.footer a:hover {
+    color: #26c4d5;
+}
+
+/* Estilo da Navbar */
+.navbar {
+    background-color: #0f707b;
+    border-bottom: 2px solid #26c4d5;
+}
+
+.navbar-brand {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-brand:hover {
+    color: #26c4d5;
+    text-decoration: none;
+}
+
+.nav-link {
+    color: #cedbdc;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #26c4d5;
+    text-decoration: none;
 }
