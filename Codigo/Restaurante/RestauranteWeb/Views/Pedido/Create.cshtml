@@ -7,11 +7,6 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="DataHoraSolicitacao" class="control-label"></label>
                 <input asp-for="DataHoraSolicitacao" class="form-control" />
                 <span asp-validation-for="DataHoraSolicitacao" class="text-danger"></span>
@@ -33,14 +28,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
+                <input asp-for="Status" class="form-control" placeholder="S: Solicitado, C: Cancelado, A: Aprovado" />
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="PedidoDetalhes" class="control-label"></label>
-                <input asp-for="PedidoDetalhes" class="form-control" />
-                <span asp-validation-for="PedidoDetalhes" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -53,5 +44,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
