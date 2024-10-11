@@ -1,36 +1,87 @@
 ﻿@model IEnumerable<RestauranteWeb.Models.GarcomViewModel>
-<p>Garcons de Restaurante  </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cpf)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefone1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdRestaurante)
-            </th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>@Html.DisplayFor(modelItem => item.Nome)</td>
-            <td>@Html.DisplayFor(modelItem => item.Cpf)</td>
-            <td>@Html.DisplayFor(modelItem => item.Telefone1)</td>
-            <td>@Html.DisplayFor(modelItem => item.IdRestaurante)</td>
-            <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn-primary" })
-                    @Html.ActionLink("Detalhes", "Details", new { id = item.Id }, new { @class = "btn-primary" })
-                    @Html.ActionLink("Deletar", "Delete", new { id = item.Id }, new { @class = "btn-primary" })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="index-container">
+    <div class="index-header">
+        <h2 class="index-title">Garçons de Restaurante Especifico</h2>
+    </div>
+
+    <table class="table index-table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Nome)</th>
+                <th>@Html.DisplayNameFor(model => model.Cpf)</th>
+                <th>@Html.DisplayNameFor(model => model.Telefone1)</th>
+                <th>@Html.DisplayNameFor(model => model.IdRestaurante)</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Cpf)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Telefone1)</td>
+                    <td>@Html.DisplayFor(modelItem => item.IdRestaurante)</td>
+                    <td class="btn-group">
+                        @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-edit" })
+                        @Html.ActionLink("Detalhes", "Details", new { id = item.Id }, new { @class = "btn btn-details" })
+                        @Html.ActionLink("Deletar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal quantidade -->
+<div class="modal fade" id="quantidade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Quantidade de Garçons Cadastrados</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>A quantidade de garçons cadastrados é: <strong>@ViewBag.Quantidade</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal com pesquisa idRestaurante -->
+<div class="modal fade" id="buscar" tabindex="-1" aria-labelledby="meuModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="meuModalLabel">Buscar Garçons</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="@Url.Action("Create", "Garcom")">
+                    <div class="mb-3">
+                        <label for="IdRestaurante" class="form-label">ID do Restaurante</label>
+                        <input type="number" class="form-control" id="IdRestaurante" name="IdRestaurante" required>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="redirectIfIdExists()">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JS do Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+<script>
+    function redirectIfIdExists() {
+        var idRestaurante = document.getElementById("IdRestaurante").value;
+
+        if (idRestaurante) {
+            // Redireciona para a página de busca com o ID do restaurante
+            window.location.href = '@Url.Action("BuscarGarconsPorRestauranteId", "Garcom")' + '?id=' + idRestaurante;
+        } else {
+            alert("Por favor, insira um ID de restaurante válido.");
+        }
+    }
+</script>
