@@ -271,6 +271,7 @@ footer {
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
 }
 
 .index-header {
@@ -308,6 +309,7 @@ footer {
     width: 100%;
     margin-top: 10px;
     border-collapse: collapse;
+    
 }
 
     .index-table th, .index-table td {

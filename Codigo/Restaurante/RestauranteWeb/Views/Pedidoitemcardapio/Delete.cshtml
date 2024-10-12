@@ -1,10 +1,10 @@
 ﻿@model RestauranteWeb.Models.PedidoitemcardapioViewModel
 
-<h3>Voce tem certeza que gostaria de deletar este Pedido item cardapio?</h3>
-<div>
-    <h4>PedidoitemcardapioViewModel</h4>
-    <hr />
-    <dl class="row">
+<div class="details-container">
+    <h2 class="details-title">Deletar Item do cardapio</h2>
+    <p class="confirmation-text">Você tem certeza de que deseja excluir este Item?</p>
+    <hr class="details-divider" />
+    <dl class="details-list">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.IdItemCardapio)
         </dt>
@@ -25,12 +25,11 @@
         </dd>
     </dl>
 
-    <form asp-action="Delete" method="post">
+    <form asp-action="Delete" method="post" class="details-buttons">
         <input type="hidden" asp-for="IdItemCardapio" />
         <input type="hidden" asp-for="IdPedido" />
         <button type="submit" class="btn btn-danger">Confirmar exclusão</button>
+        <a asp-action="Index" class="btn btn-back">Voltar</a>
     </form>
-
+   
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
