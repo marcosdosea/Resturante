@@ -2039,6 +2039,9 @@ button[type="submit"] {
     border-color: #00bfff;
     box-shadow: 0 0 0 0.1rem rgba(0, 191, 255, 0.5);
 }
+.control-label {
+    color: #000000;
+}
 
 a {
     color: #00bfff;
