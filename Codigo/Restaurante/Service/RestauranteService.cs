@@ -116,5 +116,18 @@ namespace Service
                     Cnpj = restaurante.Cnpj,
                 }).ToList();
         }
+
+        public IEnumerable<RestauranteDto> GetDtos()
+        {
+            return context.Restaurantes
+                .Select(restaurante => new RestauranteDto
+                {
+                    Id = restaurante.Id,
+                    Nome = restaurante.Nome,
+                    Cnpj = restaurante.Cnpj,
+                }).ToList();
+
+
+        }
     }
 }
