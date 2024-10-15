@@ -63,5 +63,24 @@ namespace Service
 			return query.AsNoTracking();
 		}
 
-	}
+        public IEnumerable<AtendimentoDto> GetByStatus(string status)
+        {
+			var query = context.Atendimentos
+				.Where(x => x.Status == status)
+				.Select(x => new AtendimentoDto
+				{
+					Id = x.Id,
+					DataHoraInicio = x.DataHoraInicio,
+					DataHoraFim = x.DataHoraFim,
+					IdMesa = x.IdMesa,
+					NomeRestaurante = x.IdMesaNavigation.IdRestauranteNavigation.Nome,
+					Status = x.Status,
+					Total = x.Total,
+					TotalConta = x.TotalConta,
+					TotalDesconto = x.TotalConta,
+					TotalServico = x.TotalServico
+				});
+			return query.AsNoTracking();
+        }
+    }
 }
