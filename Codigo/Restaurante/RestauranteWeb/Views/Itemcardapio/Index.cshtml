@@ -8,7 +8,16 @@
             <a asp-action="Create" class="btn btn-create">Cadastrar</a>
             <a asp-action="ExportarParaExcel" class="btn btn-primary">Exportar para Excel</a>
         </div>
+       <form asp-action="ImportarDoExcel" asp-controller="Itemcardapio" method="post" enctype="multipart/form-data">
+            <label for="arquivoExcel" style="display: none;">Selecione o arquivo Excel para importar:</label>
+            <input type="file" id="arquivoExcel" name="arquivoExcel" accept=".xlsx, .xls" required style="display: none;" />
+            <button type="button" id="btnSelecionarArquivo">Escolher Arquivo</button>
+            <button type="submit">Importar</button>
+        </form>
+
+
     </div>
+
     <table class="table index-table">
         <thead>
             <tr>
@@ -44,4 +53,10 @@
             }
         </tbody>
     </table>
+
 </div>
+<script>
+    document.getElementById('btnSelecionarArquivo').addEventListener('click', function() {
+        document.getElementById('arquivoExcel').click();
+    });
+</script>

@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System.Globalization;
+using System.IO;
+using AutoMapper;
 using Core;
 using Core.Service;
 using Microsoft.AspNetCore.Http;
@@ -141,6 +143,68 @@ namespace RestauranteWeb.Controllers
                 return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
             }
         }
+
+   
+        [HttpPost]
+        public IActionResult ImportarDoExcel(IFormFile arquivoExcel)
+        {
+            if (arquivoExcel == null || arquivoExcel.Length == 0)
+            {
+                return BadRequest("Nenhum arquivo selecionado.");
+            }
+
+            using (var stream = new MemoryStream())
+            {
+                arquivoExcel.CopyTo(stream);
+                using (var package = new ExcelPackage(stream))
+                {
+                    var worksheet = package.Workbook.Worksheets.FirstOrDefault();
+                    if (worksheet == null)
+                    {
+                        return BadRequest("Nenhuma planilha encontrada no arquivo.");
+                    }
+
+                    int rowCount = worksheet.Dimension.Rows;
+                    for (int row = 2; row <= rowCount; row++) 
+                    {
+                        // Verifica se a linha contém dados
+                        var nome = worksheet.Cells[row, 2].Text;
+                        var precoText = worksheet.Cells[row, 3].Text;
+
+                        
+                        if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(precoText))
+                        {
+                            continue; 
+                        }
+
+                        var itemCardapio = new Itemcardapio
+                        {
+                            Nome = nome,
+                            Detalhes = worksheet.Cells[row, 4].Text,
+                            Ativo = worksheet.Cells[row, 5].Text == "1" ? (sbyte)1 : (sbyte)0,
+                            Disponivel = worksheet.Cells[row, 6].Text,
+                            IdRestaurante = uint.Parse( worksheet.Cells[row, 7].Text)
+                        };
+
+                        // Tenta converter o preço e trata erros
+                        if (decimal.TryParse(precoText, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal preco))
+                        {
+                            itemCardapio.Preco = preco;
+                        }
+                        else
+                        {
+                            itemCardapio.Preco = null; 
+                        }
+
+                        
+                        itemcardapioService.Create(itemCardapio);
+                    }
+                }
+            }
+
+            return RedirectToAction(nameof(Index)); 
+        }
+
 
     }
 }
