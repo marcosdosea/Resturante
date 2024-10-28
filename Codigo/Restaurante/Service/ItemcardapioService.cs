@@ -70,6 +70,37 @@ namespace Service
             return query;
         }
 
+        public async Task<List<ItemcardapioDto>> Buscaritemporid(uint id)
+        {
+            var itemcardapio = await context.Itemcardapios
+                .Where(g => g.Id == id)
+                .Select(g => new ItemcardapioDto
+                {
+                    Id = g.Id,
+                    Nome = g.Nome,
+                    Preco = g.Preco,
+                    Disponivel = g.Disponivel,
+                    IdRestaurante = g.IdRestaurante
 
+                })
+                .ToListAsync();
+
+            return itemcardapio;
+        }
+
+        public async Task<List<ItemcardapioDto>> BuscarItensPorNome(string nome)
+        {
+            return await context.Itemcardapios
+                .Where(i => i.Nome.Contains(nome))
+                .Select(i => new ItemcardapioDto
+                {
+                    Id = i.Id,
+                    Nome = i.Nome,
+                    Preco = i.Preco,
+                    Disponivel = i.Disponivel,
+                    IdRestaurante = i.IdRestaurante
+                })
+                .ToListAsync();
+        }
     }
 }
