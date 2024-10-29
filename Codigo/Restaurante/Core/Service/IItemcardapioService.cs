@@ -18,5 +18,7 @@ namespace Core.Service
 
         Task<List<ItemcardapioDto>> Buscaritemporid(uint id);
         Task<List<ItemcardapioDto>> BuscarItensPorNome(string nome);
+
+        Task<string> ObterReceita(string nomeReceita);
     }
 }

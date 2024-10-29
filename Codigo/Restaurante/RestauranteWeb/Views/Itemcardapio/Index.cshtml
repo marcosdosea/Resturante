@@ -4,17 +4,18 @@
 <div class="index-container">
     <div class="index-header">
         <h2 class="index-title">Lista de Itens do Cardápio</h2>
-        <div class="index-actions">
+        <div class="index-actions" style="text-align: center; display: flex; justify-content: center; gap: 10px;">
             <a asp-action="Create" class="btn btn-create">Cadastrar</a>
-            <a class="btn btn-create" data-bs-toggle="modal" data-bs-target="#buscar">Buscar pelo id</a>
+            <a class="btn btn-create" data-bs-toggle="modal" data-bs-target="#buscar">Buscar</a>
             <a asp-action="ExportarParaExcel" class="btn btn-primary">Exportar para Excel</a>
-
         </div>
        <form asp-action="ImportarDoExcel" asp-controller="Itemcardapio" method="post" enctype="multipart/form-data">
             <label for="arquivoExcel" style="display: none;">Selecione o arquivo Excel para importar:</label>
             <input type="file" id="arquivoExcel" name="arquivoExcel" accept=".xlsx, .xls" required style="display: none;" />
+            <div style="display: flex; align-items: center; gap: 10px;">
             <button type="button" id="btnSelecionarArquivo">Escolher Arquivo</button>
             <button type="submit">Importar</button>
+            </div>
         </form>
 
 
@@ -50,6 +51,9 @@
                             @Html.ActionLink("Detalhes", "Details", new { id = item.Id }, new { @class = "btn btn-details" })
                             @Html.ActionLink("Deletar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
                         </div>
+                        <a href="@Url.Action("VerReceita", "ItemCardapio", new { id = item.Id })"
+                           class="btn btn-primary"
+                           onclick="return mostrarReceita(this.href)">Ver Receita</a>
                     </td>
                 </tr>
             }
@@ -84,6 +88,41 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    function mostrarReceita(url) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const receita = data.hits[0].recipe;
+                const detalhes = `
+                        <div style="
+                                position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                            background-color: #fff; border: 1px solid #ccc; border-radius: 8px;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); padding: 16px; max-width: 300px;
+                            z-index: 1000; font-family: Arial, sans-serif;">
+                            <h3 style="margin-top: 0; color: #333;">${receita.label}</h3>
+                            <ul style="list-style-type: disc; padding-left: 20px; color: #000;">
+                                ${receita.ingredientLines.map(ing => `<li>${ing}</li>`).join('')}
+                            </ul>
+                            <button onclick="this.parentElement.remove()" style="
+                                margin-top: 12px; padding: 6px 12px; border: none; background-color: #007bff;
+                                color: white; border-radius: 4px; cursor: pointer;">
+                                Fechar
+                            </button>
+                    `;
+
+                const modal = document.createElement('div');
+                modal.innerHTML = detalhes;
+                document.body.appendChild(modal);
+            })
+            .catch(error => console.error("Erro ao buscar a receita:", error));
+
+        return false;
+    }
+</script>
+
 
 <!-- JS do Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

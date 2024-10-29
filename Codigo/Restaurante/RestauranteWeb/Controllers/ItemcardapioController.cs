@@ -242,5 +242,18 @@ namespace RestauranteWeb.Controllers
 
             return View(itemCardapioViewModel);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> VerReceita(uint id)
+        {
+            var item = itemcardapioService.Get(id);
+            if (item == null) return NotFound();
+
+            var receitaJson = await itemcardapioService.ObterReceita(item.Nome);
+
+            if (receitaJson == null) return NotFound("Receita não encontrada");
+
+            return Content(receitaJson, "application/json");
+        }
     }
 }
