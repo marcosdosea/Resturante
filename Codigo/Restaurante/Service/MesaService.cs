@@ -51,6 +51,11 @@ namespace Service
             return context.Mesas.Include(x => x.IdRestauranteNavigation).AsNoTracking();
         }
 
+        public IEnumerable<string> GetAllStatus()
+        {
+            return context.Mesas.DistinctBy(x => x.Status).Select(x => x.Status);
+        }
+
         public IEnumerable<MesaDto> GetById(int id)
         {
             var query = from mesa in context.Mesas
@@ -59,7 +64,8 @@ namespace Service
                         {
                             Id = mesa.Id,
                             Identificacao = mesa.Identificacao,
-                            NomeRestaurante = mesa.IdRestauranteNavigation.Nome
+                            NomeRestaurante = mesa.IdRestauranteNavigation.Nome,
+                            Status = mesa.Status,
                         };
 
             return query.AsNoTracking();
@@ -72,7 +78,22 @@ namespace Service
                         {
                             Id = mesa.Id,
                             Identificacao = mesa.Identificacao,
-                            NomeRestaurante = mesa.IdRestauranteNavigation.Nome
+                            NomeRestaurante = mesa.IdRestauranteNavigation.Nome,
+                            Status = mesa.Status,
+                        };
+            return query.AsNoTracking();
+        }
+
+        public IEnumerable<MesaDto> GetMesasLivres()
+        {
+            var query = from mesa in context.Mesas
+                        where mesa.Status == "LIVRE"
+                        select new MesaDto
+                        {
+                            Id = mesa.Id,
+                            Identificacao = mesa.Identificacao,
+                            NomeRestaurante = mesa.IdRestauranteNavigation.Nome,
+                            Status = mesa.Status,
                         };
             return query.AsNoTracking();
         }

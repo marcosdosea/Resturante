@@ -30,7 +30,7 @@ namespace RestauranteWeb.Controllers
         // GET: AtendimentoController/Create
         public ActionResult Create()
         {
-            var mesas = mesaService.GetDtos();
+            var mesas = mesaService.GetMesasLivres();
             var Atendimentoview = new AtendimentoViewModel
             {
                 SelectMesa = new SelectList(mesas, "Id", "Identificacao", null)

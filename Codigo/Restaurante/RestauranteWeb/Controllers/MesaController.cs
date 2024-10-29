@@ -30,12 +30,8 @@ namespace RestauranteWeb.Controllers
         // GET: MesaController/Create
         public ActionResult Create()
         {
-            var Mesaview = new MesaViewModel
-            {
-                
-            };
+            var Mesaview = new MesaViewModel();
             var Restaurantes = restauranteService.GetDtos();
-            Mesaview.Restaurantes = new SelectList(Restaurantes, "Id", "Nome", null);
             return View(Mesaview);
         }
         // POST: MesaController/Create
@@ -57,7 +53,7 @@ namespace RestauranteWeb.Controllers
             var Mesa = mesa.Get(id);
             var MesaViewModel = mapper.Map<MesaViewModel>(Mesa);
             var Restaurantes = restauranteService.GetDtos();
-            MesaViewModel.Restaurantes = new SelectList(Restaurantes, "Id", "Nome",Mesa.IdRestaurante);
+            MesaViewModel.Restaurantes = new SelectList(Restaurantes, "Id", "Nome", Mesa.IdRestaurante);
             return View(MesaViewModel);
         }
 

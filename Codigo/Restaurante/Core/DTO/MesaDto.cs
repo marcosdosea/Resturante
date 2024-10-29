@@ -10,6 +10,7 @@ namespace Core.DTO
 	{
 		public int Id { get; set; }
         public string Identificacao { get; set; } = null!;
-		public string NomeRestaurante { get; set; }
+		public string NomeRestaurante { get; set; } = null!;
+		public string Status { get; set; } = null!;
     }
 }

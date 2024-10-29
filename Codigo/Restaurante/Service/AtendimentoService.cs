@@ -20,6 +20,8 @@ namespace Service
 		public uint Create(Atendimento atendimento) 
 		{
 			context.Add(atendimento);
+			var mesa = context.Mesas.Find(atendimento.IdMesa);
+			mesa.Status = "OCUPADA";
 			context.SaveChanges();
 			return atendimento.Id;
 		}
@@ -31,6 +33,8 @@ namespace Service
 			if (atendimento != null)
 			{
 				context.Remove(atendimento);
+				var mesa = context.Mesas.Find(atendimento.IdMesa);
+				mesa.Status = "LIVRE";
 				context.SaveChanges();
 			}
 		}
@@ -38,6 +42,11 @@ namespace Service
 		public void Edit(Atendimento atendimento) 
 		{
 			context.Update(atendimento);
+			if(atendimento.Status == "C" || atendimento.Status == "F")
+			{
+				var mesa = context.Mesas.Find(atendimento.IdMesa);
+				mesa.Status = "LIVRE";
+			}
 			context.SaveChanges();
 		}
 

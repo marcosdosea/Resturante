@@ -14,6 +14,7 @@
                 <th>@Html.DisplayNameFor(model => model.Id)</th>
                 <th>@Html.DisplayNameFor(model => model.Identificacao)</th>
                 <th>@Html.DisplayNameFor(model => model.NomeRestaurante)</th>
+                <th>@Html.DisplayNameFor(model => model.Status)</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -24,6 +25,7 @@
                     <td>@Html.DisplayFor(modelItem => item.Id)</td>
                     <td>@Html.DisplayFor(modelItem => item.Identificacao)</td>
                     <td>@Html.DisplayFor(modelItem => item.NomeRestaurante)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Status)</td>
                     <td>
                         <div class="btn-group">
                             @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-edit" })

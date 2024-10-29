@@ -16,5 +16,6 @@ namespace Core.Service
         IEnumerable<Mesa> GetAll();
         IEnumerable<MesaDto> GetById(int Id);
         IEnumerable<MesaDto> GetDtos();
+        IEnumerable<MesaDto> GetMesasLivres();
     }
 }
