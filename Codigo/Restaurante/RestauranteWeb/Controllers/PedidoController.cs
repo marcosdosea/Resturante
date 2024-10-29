@@ -3,8 +3,10 @@ using Core;
 using Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RestauranteWeb.Models;
 using Service;
+using System.Diagnostics;
 
 namespace RestauranteWeb.Controllers
 {
@@ -78,6 +80,38 @@ namespace RestauranteWeb.Controllers
 
             return View(pedidoViewModel);
         }
+
+        // GET: Pedido/UpdateStatus/5
+        public ActionResult UpdateStatus(uint id)
+        {
+            var pedido1 = pedido.Get(id);
+            if (pedido1 == null)
+            {
+                return NotFound();
+            }
+
+            var pedidoViewModel = mapper.Map<PedidoViewModel>(pedido1);
+            return View(pedidoViewModel);
+        }
+
+        // POST: Pedido/UpdateStatus
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateStatus(PedidoViewModel pedidoViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+              
+                pedido.AtualizarStatus(pedidoViewModel.Id, pedidoViewModel.novostatus);
+
+                // Redireciona para a ação Index após a atualização
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Se o modelo não for válido, retorne a mesma view com o modelo para mostrar os erros
+            return View(pedidoViewModel);
+        }
+
 
 
         // POST: Pedido/Edit/5
