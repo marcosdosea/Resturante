@@ -363,6 +363,12 @@ footer {
     width: 75px;
     height: 35px;
 }
+.btn-status {
+    background-color: #26c4d5;
+    padding: 7px 15px;
+    width: 100px;
+    height: 35px;
+}
 
     .btn-edit:hover {
         background-color: #00bfff !important;
