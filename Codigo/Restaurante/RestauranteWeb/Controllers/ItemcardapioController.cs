@@ -2,6 +2,7 @@
 using System.IO;
 using AutoMapper;
 using Core;
+using Core.DTO;
 using Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -205,6 +206,41 @@ namespace RestauranteWeb.Controllers
             return RedirectToAction(nameof(Index)); 
         }
 
+        public async Task<ActionResult> BuscarItemPorIdOuNome(uint? id, string nome)
+        {
+            if (id == null && string.IsNullOrWhiteSpace(nome))
+            {
+                return BadRequest("Informe um ID ou Nome válido.");
+            }
 
+            List<ItemcardapioDto> itemDto;
+
+            if (id != null && id > 0)
+            {
+                // Busca por ID
+                itemDto = await itemcardapioService.Buscaritemporid((uint)id);
+            }
+            else
+            {
+                // Busca por Nome
+                itemDto = await itemcardapioService.BuscarItensPorNome(nome);
+            }
+
+            if (itemDto == null || itemDto.Count == 0)
+            {
+                return NotFound("Nenhum item encontrado.");
+            }
+
+            var itemCardapioViewModel = itemDto.Select(g => new ItemcardapioViewModel
+            {
+                Id = g.Id,
+                Nome = g.Nome,
+                Preco = g.Preco,
+                Disponivel = g.Disponivel,
+                IdRestaurante = g.IdRestaurante
+            }).ToList();
+
+            return View(itemCardapioViewModel);
+        }
     }
 }
