@@ -71,5 +71,48 @@
     </div>
 </div>
 
+
+
+
+<div class="index-container">
+    <div class="index-header">
+        <h2 class="index-title">Estatísticas dos Restaurantes</h2>
+        <div class="index-actions">
+            <a class="btn-primary" data-toggle="modal" data-target="#estatisticasModal">Estatísticas</a>
+        </div>
+    </div>
+
+    <!-- Você pode adicionar conteúdo aqui, como uma breve descrição das estatísticas ou gráficos -->
+    <div class="statistics-summary">
+        <p>Aqui você pode ver um resumo das estatísticas mais importantes sobre nossos restaurantes. Para detalhes, clique em 'Ver Estatísticas Detalhadas'.</p>
+    </div>
+</div>
+
+<!-- Modal para Estatísticas Detalhadas -->
+<div class="modal fade" id="estatisticasModal" tabindex="-1" role="dialog" aria-labelledby="estatisticasModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="estatisticasModalLabel">Estatísticas Detalhadas dos Restaurantes</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>@ViewBag.RelatorioEstatisticas</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+
+

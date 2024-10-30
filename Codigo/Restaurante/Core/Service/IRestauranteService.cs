@@ -16,6 +16,7 @@ namespace Core.Service
         Restaurante? Get(uint id);
         IEnumerable<Restaurante> GetAll();
         IEnumerable<RestauranteDto> GetByNome(string nome);
-        IEnumerable<RestauranteDto> GetDtos();   
+        IEnumerable<RestauranteDto> GetDtos();
+        string GerarRelatorioEstatisticas();
     }
 }

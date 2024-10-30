@@ -25,7 +25,7 @@ namespace RestauranteWeb.Controllers
         {
             var listaRestaurante = restauranteService.GetAll()
                 .OrderBy(r => r.Nome)
-                .Take(10) // Pega apenas os 10 primeiros
+                .Take(10) 
                 .ToList();
             var listaRestauranteModel = mapper.Map<List<RestauranteViewModel>>(listaRestaurante);
             int quantidadeRestaurante = restauranteService.QuantidadeRestaurantesCadastrado();
@@ -33,6 +33,11 @@ namespace RestauranteWeb.Controllers
             return View(listaRestauranteModel);
         }
 
+        public IActionResult Estatisticas()
+        {
+            var relatorio = restauranteService.GerarRelatorioEstatisticas();
+            return View("Estatisticas", model: relatorio);
+        }
 
         // GET: RestauranteController/Details/5
         public ActionResult Details(uint id)

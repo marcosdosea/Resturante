@@ -1,124 +1,132 @@
 ﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
-/* layout.css */
+
 
 /* layout.css */
 
-/* Estilo para a área de detalhes */
-.details-container {
-    background-color: #f8f9fa; /* Fundo suave */
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-top: 20px;
+/* Estilos gerais da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #333;
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
 }
 
-/* Estilo do título */
-.details-title {
-    font-size: 1.8rem;
-    color: #0f707b;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-align: center;
+/* Estilos para o cabeçalho (header) */
+header {
+    background-color: #333;
+    padding: 20px 0;
+    color: white;
 }
 
-.details-divider {
-    border-top: 2px solid #cedbdc;
-    margin: 10px 0;
-}
+    header .navbar-brand {
+        font-size: 2rem;
+        color: white;
+        font-weight: bold;
+    }
 
-/* Estilo para formulários */
-.form-container {
-    max-width: 800px;
-    margin: 0 auto;
-}
+    header .navbar-nav .nav-link {
+        color: #00bfff;
+        padding: 10px;
+        text-decoration: none;
+        border: 1px solid #00bfff;
+        border-radius: 5px;
+        margin: 0 5px;
+    }
 
-.form-group label {
-    font-weight: bold;
-    color: #0f707b;
-}
+        header .navbar-nav .nav-link:hover {
+            background-color: #00bfff;
+            color: white;
+        }
 
-.form-group .form-control {
+/* Estilos para o campo de pesquisa */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    border: 1px solid #cedbdc;
-}
-
-.form-buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
     margin-top: 15px;
 }
 
-.btn-primary {
-    background-color: #0f707b;
-    border-color: #0f707b;
-    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+/* Estilos para o botão de pesquisa */
+button[type="submit"] {
+    background-color: #00bfff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
 }
 
-.btn-primary:hover {
-    background-color: #26c4d5;
-    border-color: #26c4d5;
+    button[type="submit"]:hover {
+        background-color: #007bbf;
+    }
+
+/* Estilos para o rodapé (footer) */
+footer {
+    background-color: #1f1f1f;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    margin-top: 50px;
 }
+
+    footer a {
+        color: #00bfff;
+    }
+
+        footer a:hover {
+            color: #007bbf;
+        }
+
+/* Estilos gerais para botões */
+.btn-primary {
+    background-color: #26c4d5;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+}
+
+    .btn-primary:hover {
+        background-color: #007bbf;
+    }
 
 .btn-back {
-    background-color: transparent;
-    color: #0f707b;
-    border: 1px solid #0f707b;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    background-color: #00bfff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    width: 100%;
 }
 
-.btn-back:hover {
-    background-color: #0f707b;
-    color: #ffffff;
-}
-
-.text-danger {
-    color: #e74c3c;
-}
-
-/* Estilo para o footer */
-.footer {
-    background-color: #f8f9fa;
-    color: #63878a;
-    padding: 20px;
-    text-align: center;
-    border-top: 2px solid #0f707b;
-}
-
-.footer a {
-    color: #0f707b;
-    transition: color 0.2s ease-in-out;
-}
-
-.footer a:hover {
-    color: #26c4d5;
-}
-
-/* Estilo da Navbar */
-.navbar {
-    background-color: #0f707b;
-    border-bottom: 2px solid #26c4d5;
-}
-
-.navbar-brand {
-    color: #ffffff;
-    font-weight: bold;
-    font-size: 1.5rem;
-}
-
-.navbar-brand:hover {
-    color: #26c4d5;
+.btn-link {
+    color: #00bfff;
     text-decoration: none;
 }
 
-.nav-link {
-    color: #cedbdc;
-    transition: color 0.3s ease-in-out;
+    .btn-link:hover {
+        text-decoration: underline;
+    }
+
+/* Estilos de responsividade */
+@media (max-width: 768px) {
+    header .navbar-brand {
+        font-size: 1.5rem;
+    }
 }
 
-.nav-link:hover {
-    color: #26c4d5;
-    text-decoration: none;
-}
+
+
+

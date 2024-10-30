@@ -7,6 +7,14 @@ body {
     padding: 0;
 }
 
+.statistics-summary {
+    background-color: white;
+    color: #000;
+    font-size: 0.8rem; 
+    padding: 20px;
+    border-radius: 5px; 
+    margin: 20px;
+}
 /* Estilos para o cabeçalho (header) */
 header {
     background-color: #333;

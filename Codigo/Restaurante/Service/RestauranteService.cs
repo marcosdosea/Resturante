@@ -97,7 +97,7 @@ namespace Service
         public IEnumerable<Restaurante> GetAll()
         {
             return context.Restaurantes.AsNoTracking().ToList();
-         
+
         }
 
         /// <summary>
@@ -128,6 +128,30 @@ namespace Service
                 }).ToList();
 
 
+        }
+
+        /// <summary>
+        /// Calcula estatísticas resumidas dos restaurantes cadastrados.
+        /// </summary>
+        /// <returns>Relatório com a média de garçons e itens de cardápio por restaurante.</returns>
+        public string GerarRelatorioEstatisticas()
+        {
+            var totalRestaurantes = context.Restaurantes.Count();
+            if (totalRestaurantes == 0)
+            {
+                return "Não há restaurantes cadastrados para gerar estatísticas.";
+            }
+
+            var mediaGarcons = context.Garcoms.Count() / (double)totalRestaurantes;
+            var mediaItensCardapio = context.Itemcardapios.Count() / (double)totalRestaurantes;
+
+            var relatorio = new StringBuilder();
+            relatorio.AppendLine("Relatório de Estatísticas dos Restaurantes:");
+            relatorio.AppendLine($"Total de Restaurantes: {totalRestaurantes}");
+            relatorio.AppendLine($"Média de Garçons por Restaurante: {mediaGarcons:N2}");
+            relatorio.AppendLine($"Média de Itens de Cardápio por Restaurante: {mediaItensCardapio:N2}");
+
+            return relatorio.ToString();
         }
     }
 }
