@@ -12,5 +12,6 @@ namespace Core.Service
         IEnumerable<Garcom> GetAll();
         IEnumerable<GarcomDto> GetByNome(string nome);
         Task<List<GarcomDto>> BuscarGarconsPorRestauranteId(uint id);
+        Task<List<GarcomDto>> BuscarGarconsPorCidade(string cidade);
     }
 }

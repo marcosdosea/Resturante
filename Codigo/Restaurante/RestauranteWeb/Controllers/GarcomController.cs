@@ -143,5 +143,32 @@ namespace RestauranteWeb.Controllers
 
             return View(garconsViewModel);
         }
+
+        public async Task<IActionResult> BuscarGarconsPorCidade(string cidade)
+        {
+            if (string.IsNullOrWhiteSpace(cidade))
+            {
+                return BadRequest("Cidade inválida.");
+            }
+
+            var garconsDto = await garcomService.BuscarGarconsPorCidade(cidade);
+
+            if (garconsDto == null || garconsDto.Count == 0)
+            {
+                return NotFound("Nenhum garçom encontrado para a cidade fornecida.");
+            }
+
+            var garconsViewModel = garconsDto.Select(static g => new GarcomViewModel
+            {
+                Id = g.Id,
+                Nome = g.Nome,
+                Cpf = g.Cpf,
+                Telefone1 = g.Telefone1,
+                IdRestaurante = g.IdRestaurante
+            }).ToList();
+
+            return View(garconsViewModel);
+        }
+
     }
 }

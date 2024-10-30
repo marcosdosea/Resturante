@@ -94,5 +94,22 @@ namespace Service
 
             return garcons;
         }
+
+        public async Task<List<GarcomDto>> BuscarGarconsPorCidade(string cidade)
+        {
+            var garcons = await context.Garcoms
+                .Where(g => g.Cidade == cidade)
+                .Select(g => new GarcomDto
+                {
+                    Id = g.Id,
+                    Nome = g.Nome,
+                    Cpf = g.Cpf,
+                    Telefone1 = g.Telefone1,
+                    IdRestaurante = g.IdRestaurante
+                })
+                .ToListAsync();
+
+            return garcons;
+        }
     }
 }        

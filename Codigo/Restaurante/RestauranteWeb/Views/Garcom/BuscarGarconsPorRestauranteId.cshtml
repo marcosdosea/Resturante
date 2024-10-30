@@ -78,7 +78,7 @@
         var idRestaurante = document.getElementById("IdRestaurante").value;
 
         if (idRestaurante) {
-            // Redireciona para a página de busca com o ID do restaurante
+            
             window.location.href = '@Url.Action("BuscarGarconsPorRestauranteId", "Garcom")' + '?id=' + idRestaurante;
         } else {
             alert("Por favor, insira um ID de restaurante válido.");
