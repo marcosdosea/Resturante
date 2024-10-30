@@ -115,7 +115,6 @@ namespace Service
             string appId = "eff0c826";
             string appKey = "4617d32bd4bff87df0a7403dca61b4ac";
             string endpoint = "https://api.edamam.com/search";
-            string googleapi = "AIzaSyD5BKrkzTq3TXZntYv0J2WHtLIqxWVUKDw";
             string query = HttpUtility.UrlEncode(nomeReceita);
             string url = $"{endpoint}?q={query}&app_id={appId}&app_key={appKey}&lang=pt";
 
